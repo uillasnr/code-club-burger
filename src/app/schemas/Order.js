@@ -25,6 +25,10 @@ const OrderSchema = new mongoose.Schema(
                     type: String,
                     required: true
                 },
+                description: {  //TESTE
+                    type: String,
+                    required: true
+                }, 
                 price: {
                     type: Number,
                     required: true

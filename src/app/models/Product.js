@@ -7,6 +7,7 @@ class Product extends Model {
         super.init(
             {
                 name: Sequelize.STRING,
+                description: Sequelize.TEXT, ///TESTE */   Description
                 price: Sequelize.STRING,
                 path: Sequelize.STRING,
                 offer: Sequelize.BOOLEAN,
@@ -37,3 +38,6 @@ class Product extends Model {
 }
 
 export default Product
+
+
+

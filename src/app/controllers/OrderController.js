@@ -1,5 +1,4 @@
-
-//banco de dados mongo
+/* O controller é onde as informações vão entrar na aplicação. O controller vai manipular essas informações fazer algumas validações e depois chamar o Model pra gravar as informações no banco de dados */
 
 import * as Yup from 'yup' // Yup valida os dados. O * representa todos os arquivos que devem ser exportados do Yup
 import Category from '../models/Category'
@@ -18,7 +17,7 @@ class OrderController {
                 .of(
                     Yup.object().shape({
                         id: Yup.number().required(),
-                        quantity: Yup.number().required()
+                        quantity: Yup.number().required(),
                     })
                 )
         })
@@ -54,6 +53,7 @@ class OrderController {
             const newProduct = {
                 id: product.id,
                 name: product.name,
+                description: product.description,
                 price: product.price,
                 category: product.category.name,
                 url: product.url,

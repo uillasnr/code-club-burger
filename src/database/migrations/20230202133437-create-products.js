@@ -18,6 +18,10 @@ module.exports = {
 
                 allowNull: false
             },
+       /*       Description: {   ////TESTE
+                type: Sequelize.TEXT,
+                allowNull: true
+            },  */
 
             price: {
                 type: Sequelize.INTEGER,

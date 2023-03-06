@@ -10,6 +10,7 @@ class ProductController {
     async store(request, response) {
         const schema = Yup.object().shape({
             name: Yup.string().required(),
+            description: Yup.string().required(), //teste */ 
             price: Yup.number().required(),
             category_id: Yup.number().required(),
             offer: Yup.boolean()
@@ -28,22 +29,23 @@ class ProductController {
         if (!isAdmin) {
             return response.status(401).json()
         }
- 
+
         const { filename: path } = request.file
-        const { name, price, category_id, offer } = request.body
+        const { name, price, category_id, offer, description } = request.body
 
         const product = await Product.create({
             name,
+            description,
             price: price,
             category_id,
             path,
             offer
         })
- 
-///const file = request.file
-//console.log(file)
+
+        ///const file = request.file
+        //console.log(file)
         return response.json(product)
-    } catch (err) {
+    } catch(err) {
         console.log(err)
     }
 
@@ -70,21 +72,11 @@ class ProductController {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    
     /* Metodo para editar produto */
     async update(request, response) {
         const schema = Yup.object().shape({
             name: Yup.string(),
+            description: Yup.string().required(),
             price: Yup.number(),
             category_id: Yup.number(),
             offer: Yup.boolean()
@@ -121,11 +113,12 @@ class ProductController {
             path = request.file.filename
         }
 
-        const { name, price, category_id, offer } = request.body
+        const { name, price, category_id, offer, description } = request.body
 
         await Product.update(
             {
                 name,
+                description,
                 price,
                 category_id,
                 path,
